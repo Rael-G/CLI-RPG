@@ -6,8 +6,9 @@ UserInterface::UserInterface()
     {
         {"help", std::bind(&UserInterface::Help, this)},
         {"exit", std::bind(&UserInterface::Exit, this)},
-        {"return", std::bind(&UserInterface::Return, this)}
-
+        {"return", std::bind(&UserInterface::Return, this)},
+        {"options", std::bind(&UserInterface::Options, this)}
+        
     });
 }
 
@@ -87,5 +88,12 @@ void UserInterface::Help()
 
 void UserInterface::Return()
 {
+    //do nothing, automately return to previous UI when Run() receive "return"
     ConsoleUtils::ClearScreen();
+}
+
+void UserInterface::Options()
+{
+    ConsoleUtils::ClearScreen();
+
 }

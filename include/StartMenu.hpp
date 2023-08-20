@@ -7,9 +7,10 @@
 
 #pragma once
 
-class InitialMenu : public UserInterface 
+class StartMenu : public UserInterface 
 {
     public:
-        InitialMenu();
-        void Start();
+        StartMenu();
+        void New();
+        void Load();
 };

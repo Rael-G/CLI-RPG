@@ -21,4 +21,5 @@ class UserInterface
         void Exit();
         void Help();
         void Return();
+        void Options();
 };

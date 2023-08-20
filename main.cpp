@@ -1,8 +1,8 @@
-#include "InitialMenu.hpp"
+#include "StartMenu.hpp"
 
 int main(){
 
-    UserInterface *ui = new InitialMenu();
+    UserInterface *ui = new StartMenu();
     ui->Run();
     delete ui;
 
