@@ -1,8 +1,9 @@
 #include "InitialMenu.hpp"
-#include "ConsoleUtils.hpp"
 
-    InitialMenu::InitialMenu() : UserInterface() {
-        commands.insert({
+    InitialMenu::InitialMenu() : UserInterface() 
+    {
+        subCommands.insert(
+        {
             {"start", std::bind(&InitialMenu::Start, this)}
         });
 
@@ -13,6 +14,11 @@
         std::cout << "You can type <help> anytime for instructions." << std::endl
             << "Type <start> to begin your adventure." << std::endl << std::endl;
     }
-    void InitialMenu::Start(){
+    void InitialMenu::Start()
+    {
         ConsoleUtils::ClearScreen();
+
+        UserInterface *ui = new CreationMenu();
+        ui->Run();
+        delete ui;
     }
