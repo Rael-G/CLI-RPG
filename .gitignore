@@ -400,5 +400,5 @@ FodyWeavers.xsd
 #Pessoal
 bin/
 Makefile
-
+.vscode
 
