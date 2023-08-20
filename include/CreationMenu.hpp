@@ -1,6 +1,8 @@
 #include "UserInterface.hpp"
 #include <string>
 
+#pragma once
+
 class CreationMenu : public UserInterface 
 {
     private:

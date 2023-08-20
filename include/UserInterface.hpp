@@ -1,17 +1,17 @@
-#include <map>
+#pragma once
+
+#include <vector>
 #include <string>
 #include <functional>
 #include <iostream>
 #include <algorithm>
 #include "ConsoleUtils.hpp"
 
-#pragma once
-
 class UserInterface 
 {
     protected:
-        std::map<std::string, std::function<void()>> commands {};
-        std::map<std::string, std::function<void()>> subCommands {};
+        std::vector<std::pair<std::string, std::function<void()>>> commands {};
+        std::vector<std::pair<std::string, std::function<void()>>> subCommands {};
 
     public:
         UserInterface();

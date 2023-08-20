@@ -2,29 +2,28 @@
 
 CreationMenu::CreationMenu() : UserInterface()
 {
-    subCommands.insert(
-    {
-        {"name", std::bind(&CreationMenu::Name, this)},
-        {"atributes", std::bind(&CreationMenu::Atributes, this)},
-        {"finish", std::bind(&CreationMenu::Finish, this)}
-
-    });
+    subCommands.push_back({"name", std::bind(&CreationMenu::Name, this)});
+    subCommands.push_back({"atributes", std::bind(&CreationMenu::Atributes, this)});
+    subCommands.push_back({"finish", std::bind(&CreationMenu::Finish, this)});
 }
 
 void CreationMenu::Name()
 {
     std::cout << "Choose yout name: ";
-    std::cin >> CreationMenu::name;
-    system("clear");
+    std::cin >> name;
+    ConsoleUtils::ClearScreen();
+
 }
 
 void CreationMenu::Atributes()
 {
     std::cout << "Define your Atributes: ";
-    std::cin >> CreationMenu::atributes;
-    system("clear");
+    std::cin >> atributes;
+    ConsoleUtils::ClearScreen();
+
 }
 
 void CreationMenu::Finish()
 {
+    ConsoleUtils::ClearScreen();
 }    

@@ -2,14 +2,10 @@
 
 UserInterface::UserInterface()
 {
-    commands.insert(
-    {
-        {"help", std::bind(&UserInterface::Help, this)},
-        {"exit", std::bind(&UserInterface::Exit, this)},
-        {"return", std::bind(&UserInterface::Return, this)},
-        {"options", std::bind(&UserInterface::Options, this)}
-        
-    });
+        commands.push_back({"options", std::bind(&UserInterface::Options, this)});
+        commands.push_back({"help", std::bind(&UserInterface::Help, this)});
+        commands.push_back({"return", std::bind(&UserInterface::Return, this)});
+        commands.push_back({"exit", std::bind(&UserInterface::Exit, this)});
 }
 
 void UserInterface::Run()
@@ -32,50 +28,47 @@ void UserInterface::Run()
 
 void UserInterface::ShowCommands()
 {
-    auto it = commands.begin();
     std::cout << "Available Commands:" << std::endl;
-    for ( ; it!=commands.end(); it++)
+    for ( int i = 0; i < commands.size(); i++)
     {
-        std::cout << "<" << it->first << "> ";
+        std::cout << "<" << commands[i].first << "> ";
     }
     std::cout << std::endl;
 
-    it = subCommands.begin();
-    for ( ; it!=subCommands.end(); it++)
+    for ( int i = 0; i < subCommands.size(); i++)
     {
-        std::cout << "<" << it->first << "> ";
+        std::cout << "<" << subCommands[i].first << "> ";
     }
-    std::cout << std::endl;
-    
+    std::cout << std::endl; 
 }
 
 void UserInterface::Input(std::string input)
 {
-    auto it = commands.find(input);
-    if (it != commands.end())
+
+    for (int i = 0; i < commands.size(); i++)
     {
-        it->second();
-    }
-    else 
-    {
-        it = subCommands.find(input);
-        if (it != subCommands.end())
+        if (commands[i].first == input)
         {
-            it->second();
-        }
-        else
-        {
-            ConsoleUtils::ClearScreen();
-            std::cout << "Invalid Command!" << std::endl;
+            commands[i].second();
+            return;
         }
     }
+    for (int i = 0; i < subCommands.size(); i++)
+    {
+        if (subCommands[i].first == input)
+        {
+            subCommands[i].second();
+            return;
+        }
+    }
+
+    ConsoleUtils::ClearScreen();
+    std::cout << "Invalid Command!" << std::endl;
 }
 
-void UserInterface::Exit()
+void UserInterface::Options()
 {
     ConsoleUtils::ClearScreen();
-
-    std::exit(0);
 }
 
 void UserInterface::Help()
@@ -92,8 +85,9 @@ void UserInterface::Return()
     ConsoleUtils::ClearScreen();
 }
 
-void UserInterface::Options()
+void UserInterface::Exit()
 {
     ConsoleUtils::ClearScreen();
 
+    std::exit(0);
 }
