@@ -1,4 +1,5 @@
 #include "UserInterface.hpp"
+#include "ConsoleUtils.hpp"
 
 UserInterface::UserInterface(){
     commands.insert({
@@ -23,19 +24,19 @@ void UserInterface::Input(std::string input)
         it->second();
     }
     else{
-        system("clear");
+        ConsoleUtils::ClearScreen();
         std::cout << "Invalid Command!" << std::endl;
     }
 }
 
 void UserInterface::Exit(){
-    system("clear");
+    ConsoleUtils::ClearScreen();
 
     std::exit(0);
 }
 
 void UserInterface::Help(){
-    system("clear");
+    ConsoleUtils::ClearScreen();
 
     std::cout << "This is a  Command-Text based RPG. Type your command at" 
         << " the command line and magic happens!" << std::endl;

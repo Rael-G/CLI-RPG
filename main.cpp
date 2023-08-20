@@ -11,7 +11,7 @@ int main(){
     while (true)
     {
         ui->ShowCommands();
-        std::cout << ": ";
+        std::cout << "> ";
         std::cin >> input;
 
         std::transform(input.begin(), input.end(), input.begin(), [](unsigned char c) {
