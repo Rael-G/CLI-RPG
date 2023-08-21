@@ -19,7 +19,7 @@ bool Hero::Attack()
     return true;
 }
 
-std::string Hero::ShowStatus()
+std::string Hero::Status()
 {
     return name + "\n\n"
         + attributes->ToString() + "\n"
@@ -27,7 +27,7 @@ std::string Hero::ShowStatus()
         + (std::string)"Mana: " + std::to_string(GetMana()) + "\n";
 }
 
-std::string Hero::ShowInventory()
+std::string Hero::Inventory()
 {
     std::string str;
     for(Item *item : inventory){

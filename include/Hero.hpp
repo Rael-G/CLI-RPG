@@ -19,6 +19,6 @@ class Hero{
         int GetMana();
         bool Attack();
 
-        std::string ShowStatus();
-        std::string ShowInventory();
+        std::string Status();
+        std::string Inventory();
 };
