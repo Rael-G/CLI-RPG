@@ -13,4 +13,6 @@ class StartMenu : public UserInterface
         StartMenu();
         void New();
         void Load();
+        void Options();
+        void Help();
 };

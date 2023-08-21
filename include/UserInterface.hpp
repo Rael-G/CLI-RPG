@@ -19,7 +19,5 @@ class UserInterface
         void ShowCommands();
         void Input(std::string input);
         void Exit();
-        void Help();
         void Return();
-        void Options();
 };

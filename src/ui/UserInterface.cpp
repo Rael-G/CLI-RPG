@@ -2,8 +2,6 @@
 
 UserInterface::UserInterface()
 {
-        commands.push_back({"options", std::bind(&UserInterface::Options, this)});
-        commands.push_back({"help", std::bind(&UserInterface::Help, this)});
         commands.push_back({"return", std::bind(&UserInterface::Return, this)});
         commands.push_back({"exit", std::bind(&UserInterface::Exit, this)});
 }
@@ -14,7 +12,8 @@ void UserInterface::Run()
         while (input != "return")
         {
             ShowCommands();
-            std::cout << "> ";
+            std::string msg {"> "};
+            ConsoleUtils::PrintTextSlowly(msg, 1);
             std::cin >> input;
 
             std::transform(input.begin(), input.end(), input.begin(), [](unsigned char c) 
@@ -28,18 +27,20 @@ void UserInterface::Run()
 
 void UserInterface::ShowCommands()
 {
-    std::cout << "Available Commands:" << std::endl;
+    std::string msg {"Available Commands:\n"};
     for ( int i = 0; i < commands.size(); i++)
     {
-        std::cout << "<" << commands[i].first << "> ";
+        msg += "<" + commands[i].first + "> ";
     }
-    std::cout << std::endl;
+    msg += "\n";
 
     for ( int i = 0; i < subCommands.size(); i++)
     {
-        std::cout << "<" << subCommands[i].first << "> ";
+        msg += "<" + subCommands[i].first + "> ";
     }
-    std::cout << std::endl; 
+    msg += "\n";
+    
+    ConsoleUtils::PrintTextSlowly(msg, 1);
 }
 
 void UserInterface::Input(std::string input)
@@ -63,20 +64,8 @@ void UserInterface::Input(std::string input)
     }
 
     ConsoleUtils::ClearScreen();
-    std::cout << "Invalid Command!" << std::endl;
-}
-
-void UserInterface::Options()
-{
-    ConsoleUtils::ClearScreen();
-}
-
-void UserInterface::Help()
-{
-    ConsoleUtils::ClearScreen();
-
-    std::cout << "This is a  Command-Text based RPG. Type your command at" 
-        << " the command line and magic happens!" << std::endl;
+    std::string msg {"Invalid Command!\n"};
+    ConsoleUtils::PrintTextSlowly(msg, 1);
 }
 
 void UserInterface::Return()
