@@ -16,3 +16,11 @@ void ConsoleUtils::PrintTextSlowly(const std::string& text, int delayMillis) {
         std::this_thread::sleep_for(std::chrono::milliseconds(delayMillis));
     }
 }
+
+std::string ConsoleUtils::ScanInput()
+{
+    std::string str {};
+    std::cin >> str;
+    
+    return str;
+}

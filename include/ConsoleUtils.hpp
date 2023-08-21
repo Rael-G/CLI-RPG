@@ -4,10 +4,13 @@
 #include <thread>
 #include <chrono>
 
-namespace ConsoleUtils
+class ConsoleUtils
 {
-    extern const char* clearCommand;
+    private:
+        static const char* clearCommand;
 
-    void ClearScreen();
-    void PrintTextSlowly(const std::string& text, int delayMillis = 100);
-}
+    public:
+        static void ClearScreen();
+        static void PrintTextSlowly(const std::string& text, int delayMillis = 100);
+        static std::string ScanInput();
+};
