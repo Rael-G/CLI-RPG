@@ -1,16 +1,16 @@
-#include "UserInterface.hpp"
 #include <string>
+#include "UserInterface.hpp"
+#include "Attributes.hpp"
+#include "Hero.hpp"
 
 #pragma once
 
 class CreationMenu : public UserInterface 
 {
-    private:
-        std::string name;
-        std::string atributes;
     public:
+        std::string name;
+        std::string ToString() override;
         CreationMenu();
         void Name();
-        void Atributes();
         void Finish();    
 };

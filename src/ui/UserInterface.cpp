@@ -8,21 +8,22 @@ UserInterface::UserInterface()
 
 void UserInterface::Run()
 {
-        std::string input {""};
-        while (input != "return")
+    std::string input {""};
+    while (input != "return")
+    {
+        ConsoleUtils::PrintTextSlowly(this->ToString() + "\n\n", 50);
+        ShowCommands();
+        std::string msg {"> "};
+        ConsoleUtils::PrintTextSlowly(msg, 1);
+        input = ConsoleUtils::ScanInput();
+
+        std::transform(input.begin(), input.end(), input.begin(), [](unsigned char c) 
         {
-            ShowCommands();
-            std::string msg {"> "};
-            ConsoleUtils::PrintTextSlowly(msg, 1);
-            std::cin >> input;
+            return std::tolower(c);
+        });
 
-            std::transform(input.begin(), input.end(), input.begin(), [](unsigned char c) 
-            {
-                return std::tolower(c);
-            });
-
-            Input(input);
-        }
+        Input(input);
+    }
 }
 
 void UserInterface::ShowCommands()
@@ -45,7 +46,6 @@ void UserInterface::ShowCommands()
 
 void UserInterface::Input(std::string input)
 {
-
     for (int i = 0; i < commands.size(); i++)
     {
         if (commands[i].first == input)
@@ -64,7 +64,7 @@ void UserInterface::Input(std::string input)
     }
 
     ConsoleUtils::ClearScreen();
-    std::string msg {"Invalid Command!\n"};
+    std::string msg {"Invalid Command!\n\n"};
     ConsoleUtils::PrintTextSlowly(msg, 1);
 }
 

@@ -15,9 +15,11 @@ class UserInterface
 
     public:
         UserInterface();
-        void Run();
+        virtual ~UserInterface() {}
+        virtual void Run();
         void ShowCommands();
         void Input(std::string input);
+        virtual std::string ToString() = 0;
         void Exit();
         void Return();
 };
