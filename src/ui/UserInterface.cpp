@@ -11,7 +11,7 @@ void UserInterface::Run()
     std::string input {""};
     while (input != "return")
     {
-        ConsoleUtils::PrintTextSlowly(this->ToString() + "\n\n", 50);
+        ConsoleUtils::PrintTextSlowly(this->ToString() + "\n\n", 1);
         ShowCommands();
         std::string msg {"> "};
         ConsoleUtils::PrintTextSlowly(msg, 1);

@@ -2,8 +2,8 @@
 
 #include "locations/Location.hpp"
 #include "global/World.hpp"
-#include "nlohmann/json.hpp"
-
+#include "external/nlohmann/json.hpp"
+#include "exceptions/CorruptedSaveGameException.hpp"
 using json = nlohmann::json;
 
 struct SaveLocation

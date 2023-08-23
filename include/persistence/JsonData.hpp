@@ -16,6 +16,7 @@ class JsonData : public Data
 
         bool SaveData(SaveGame saveGame) override;
         std::list<SaveGame> LoadData() override;
+        int GetCorrupt() override;
 
     private:
         std::list<json> GetJsons();

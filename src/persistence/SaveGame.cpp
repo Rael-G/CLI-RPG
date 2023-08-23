@@ -16,19 +16,10 @@ json SaveGame::ToJson() const {
 
 SaveGame SaveGame::FromJson(json j)
 {
-    try
-    {   
     std::string idd = j["id"];
     json hr = j["hero"];
     json loc = j["location"];
     std::string dt = j["date"];
 
     return SaveGame(SaveHero::FromJson(hr), SaveLocation::FromJson(loc), dt);
-    }
-    catch(const std::exception &e)
-    {
-        std::string msg {"\nError In SaveGame: \nSaveGame FromJson(json j)\n" 
-            + std::string(e.what()) + "\n"};
-        throw std::runtime_error(msg);
-    }
 }

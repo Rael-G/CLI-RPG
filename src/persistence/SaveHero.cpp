@@ -36,8 +36,6 @@ json SaveHero::ToJson() const
 
 SaveHero SaveHero::FromJson(json j)
 {
-    try
-    {
     std::string name = j["name"];
     int health, mana, strength, dexterity, intelligence, faith, charisma;
     health = j["attributes"]["health"];
@@ -56,11 +54,4 @@ SaveHero SaveHero::FromJson(json j)
     Hero *hero = new Hero(name, attributes, SaveInventory::FromStrToItem(inventory));
 
     return SaveHero(hero);
-    }
-    catch(const json::exception& e)
-    {
-        std::string msg {"\nError In SaveHero: \nSaveHero FromJson(json j)\n" 
-            + std::string(e.what()) + j.dump() + "\n"};
-        throw std::runtime_error(msg);
-    }
 }

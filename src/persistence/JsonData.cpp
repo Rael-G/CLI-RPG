@@ -1,11 +1,12 @@
 #include "persistence/JsonData.hpp"
+#include "exceptions/EmptySaveFolderException.hpp"
 
 bool JsonData::SaveData(SaveGame saveGame)
 {
     json save = saveGame.ToJson();
     std::string saveName = saveGame.hero->GetName();
 
-    fs::path path = "/home/raelg/documents/projects/cpp/rpg/.save/";
+    fs::path path = "./.save/";
 
     if (!fs::exists(path)) 
     {
@@ -27,56 +28,54 @@ bool JsonData::SaveData(SaveGame saveGame)
 
 std::list<SaveGame> JsonData::LoadData()
 {
-    try
-    {
-        std::list<json> jsons = GetJsons();
-        std::list<SaveGame> saves;
+    std::list<json> jsons = GetJsons();
+    std::list<SaveGame> saves;
 
-        for (json j : jsons)
-        {
-            saves.push_back(SaveGame::FromJson(j));
-        }
+    for (json j : jsons)
+    {
+        saves.push_back(SaveGame::FromJson(j));
+    }
 
     return saves;
-    }
-    catch(const std::exception& e) 
-    {
-        std::string err {"\nJsonData Error on \nstd::list<SaveGame> LoadData()\n" + std::string(e.what())};
-        throw std::runtime_error(err);
-    }
 }
 std::list<json> JsonData::GetJsons()
 {
-    try
+    std::list<std::string> paths;
+    fs::path path = "./.save/";
+
+    if (!fs::exists(path) || !path.empty())
     {
-        std::list<std::string> paths;
-        fs::path path = "/home/raelg/documents/projects/cpp/rpg/.save/";
+        throw EmptySaveFolderException();
+    }
 
-        for (auto& entry : fs::directory_iterator(path))
-        {
-            if (entry.is_regular_file()){
-                paths.push_back(entry.path());
-            }
+    for (auto& entry : fs::directory_iterator(path))
+    {
+        if (entry.is_regular_file()){
+            paths.push_back(entry.path());
         }
+    }
 
-        std::list<json> jsons;
-    
-        for (std::string file: paths)
+    std::list<json> jsons;
+    for (std::string file: paths)
+    {
+        try 
         {
             std::ifstream inputFile(file);
             json j;
             inputFile >> j;
             jsons.push_back(j);
-
             inputFile.close();
         }
+        catch(const std::exception& e)
+        {
+            corrupt++;
+        }
+    }
 
-        return jsons;
-    }
-    catch(const std::exception& e)
-    {
-        std::string err = "\nJsonData Error on std::list<json> GetJsons()\n" 
-            + std::string(e.what()) + '\n';
-        throw std::runtime_error(err);
-    }
+    return jsons;
+}
+
+int JsonData::GetCorrupt()
+{
+    return corrupt;
 }

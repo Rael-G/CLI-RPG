@@ -13,3 +13,8 @@ std::list<SaveGame> SaveManager::Load()
 {
     return data->LoadData();
 }
+
+int SaveManager::GetCorrupt()
+{
+    return data->GetCorrupt();
+}

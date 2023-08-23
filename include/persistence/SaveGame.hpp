@@ -4,7 +4,8 @@
 #include "utils/Utility.hpp"
 #include "persistence/SaveLocation.hpp"
 #include "persistence/SaveHero.hpp"
-#include "nlohmann/json.hpp"
+#include "external/nlohmann/json.hpp"
+#include "exceptions/CorruptedSaveGameException.hpp"
 
 using json = nlohmann::json;
 

@@ -10,7 +10,27 @@ StartMenu::StartMenu() : UserInterface()
 
 std::string StartMenu::ToString()
 {
-    return "Welcome to TextRPG!";
+    return " _______                                __\n" 
+           "|   _   |.--.--..----..-----..-----..--|  |\n"
+           "|.   ___||  |  ||   _||__ --||  -__||  _  |\n"
+           "|.  |___ |_____||__|  |_____||_____||_____|\n"
+           "|:      |\n"
+           "|::.. . |\n"
+           "`-------'\n"
+           " ___                       __\n"
+           "|   |    .---.-..-----..--|  |.-----.\n"
+           "|.  |    |  _  ||     ||  _  ||__ --|\n"
+           "|.  |___ |___._||__|__||_____||_____|\n"
+           "|:  |   |\n"
+           "|::.. . |\n"
+           "`-------'\n"
+           " ___                                   __\n"
+           "|   |.-----..----..--.--..----..-----.|__|.-----..-----.\n"
+           "|.  ||     ||  __||  |  ||   _||__ --||  ||  _  ||     |\n"
+           "|.  ||__|__||____||_____||__|  |_____||__||_____||__|__|\n"
+           "|:  |\n"
+           "|::.|\n"
+           "`---'\n";
 }
 
 void StartMenu::New()
@@ -26,8 +46,29 @@ void StartMenu::Load()
 {
     ConsoleUtils::ClearScreen();
 
+    std::list<SaveGame> saves;
+    int corrupt {0};
+
     std::unique_ptr<SaveManager> sm = DependencyInjector::GetSaveManager();
-    std::list<SaveGame> saves = sm->Load();
+    try
+    {
+        saves = sm->Load();
+
+        corrupt = sm->GetCorrupt();
+        if (corrupt > 0)
+        {
+            throw CorruptedSaveGameException(corrupt);
+        }
+    }
+    catch(const EmptySaveFolderException& e)
+    {
+       ConsoleUtils::PrintTextSlowly(e.Message() + "\n");
+       return;
+    }
+    catch(const CorruptedSaveGameException& e)
+    {
+         ConsoleUtils::PrintTextSlowly(e.Message() + "\n");
+    }
 
     std::string msg {"<return>\n"};
 
@@ -39,13 +80,13 @@ void StartMenu::Load()
     std::string input {""};
     while(input != "return")
     {
+        ConsoleUtils::PrintTextSlowly("\n" + msg + "\n: ", 50);
+
+        input = ConsoleUtils::ScanInput();
         if (input == "return")
         {
             break;
         }
-
-        ConsoleUtils::PrintTextSlowly("\n" + msg + "\n: ", 50);
-        input = ConsoleUtils::ScanInput();
 
         for (SaveGame save: saves)
         {

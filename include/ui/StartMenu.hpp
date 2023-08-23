@@ -6,6 +6,8 @@
 #include "ui/UserInterface.hpp"
 #include "utils/ConsoleUtils.hpp"
 #include "ui/CreationMenu.hpp"
+#include "exceptions/EmptySaveFolderException.hpp"
+#include "exceptions/CorruptedSaveGameException.hpp"
 
 class StartMenu : public UserInterface 
 {

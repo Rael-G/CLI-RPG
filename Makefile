@@ -1,48 +1,50 @@
-# Definir o compilador
-CXX = /usr/sbin/clang++
+# Define the compiler
+CXX = clang++
 #CXX = g++
 
-# Definir as opções de compilação
+# Define compilation options
 CXXFLAGS = -std=c++20 -fcolor-diagnostics -fansi-escape-codes -g
-#CXXFLAGS = -Wall -std=c++17
+#CXXFLAGS = -Wall -std=c++20
 
-# Definir os diretórios dos arquivos
+# Define file directories
 SRC_DIR = ./src
 BIN_DIR = ./bin
 INC_DIR = ./include
-INC_EXT = ./external/include
 MAIN = ./main.cpp
 
-# Adicionar o diretório de inclusão dos cabeçalhos
-CXXFLAGS += -I$(INC_DIR) -i$(INC_EXT)
+# Add the header inclusion directory
+CXXFLAGS += -I$(INC_DIR)
 
-# Encontrar recursivamente todos os arquivos .cpp em SRC_DIR
+# Recursively find all .cpp files in SRC_DIR
 SRCS := $(shell find $(SRC_DIR) -type f -name '*.cpp')
 
-# Obter os nomes dos arquivos .o correspondentes
+# Get the corresponding .o file names
 OBJS := $(patsubst $(SRC_DIR)/%.cpp,$(BIN_DIR)/%.o,$(SRCS))
 
+# Define the executable name
+TARGET = clirpg
 
-# Definir o nome do executável
-TARGET = TextRPG
-
-# Regra para gerar os arquivos-objeto
+# Rule to generate object files
 $(BIN_DIR)/%.o: $(SRC_DIR)/%.cpp $(HDRS)
-	@mkdir -p $(@D) # Cria o diretório se não existir
+	@mkdir -p $(@D)
 	$(CXX) $(CXXFLAGS) -I$(INC_DIR) -c -o $@ $<
 
-# Regra para gerar o executável
+# Rule to generate the executable
 $(BIN_DIR)/$(TARGET): $(OBJS) $(MAIN)
 	$(CXX) $(CXXFLAGS) -o $@ $(OBJS) $(MAIN)
 
 all: $(BIN_DIR)/$(TARGET)
 
-# Regra para limpar
+# Rule to clean
 clean:
 	rm -rf $(BIN_DIR)/*
 
 .PHONY: all clean
 
-# Lembrete do processo manual
-#clang++ -c ./src/arquivo.cpp -o ./bin/arquivo.o
-#clang++ ./main.cpp ./bin/*.o -o Programa
+# Manual reminder
+
+# Clean /bin
+# For each file inside /src
+# clang++ -c ./src/file.cpp -o ./bin/file.o
+# Once
+# clang++ ./main.cpp ./bin/*.o -o Program
