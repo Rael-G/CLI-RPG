@@ -1,12 +1,17 @@
 #include "entities/Hero.hpp"
 
-Hero::Hero(std::string name, Attributes *attributes, std::list<Item*> inventory)
-    : name(name), attributes(attributes), inventory(inventory) 
+Hero::Hero(std::string name, int level, Attributes *attributes, std::list<Item*> inventory)
+    : name(name), level(level), attributes(attributes), inventory(inventory) 
     {}
 
 std::string Hero::GetName()
 {
     return name;
+}
+
+int Hero::GetLevel()
+{
+    return level;
 }
 
 Attributes* Hero::GetAttributes()
