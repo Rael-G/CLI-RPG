@@ -1,4 +1,4 @@
-#include "ConsoleUtils.hpp"
+#include "utils/ConsoleUtils.hpp"
 
 #ifdef __linux__
     const char* ConsoleUtils::clearCommand = "clear";

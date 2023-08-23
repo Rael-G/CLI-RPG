@@ -1,8 +1,23 @@
-#include "Hero.hpp"
+#include "entities/Hero.hpp"
 
-Hero::Hero(std::string name, Attributes *attributes)
-    : name(name), attributes(attributes), inventory{}
-{}
+Hero::Hero(std::string name, Attributes *attributes, std::list<Item*> inventory)
+    : name(name), attributes(attributes), inventory(inventory) 
+    {}
+
+std::string Hero::GetName()
+{
+    return name;
+}
+
+Attributes* Hero::GetAttributes()
+{
+    return attributes;
+}
+
+std::list<Item*> Hero::GetInventory()
+{
+    return inventory;
+}
 
 int Hero::GetHealth()
 {

@@ -1,7 +1,7 @@
-#include "Village.hpp"
+#include "locations/Village.hpp"
 
 Village::Village(std::string name, 
-    std::vector<Location*> adjacentLocations, std::vector<Npc> npcs)
+    std::vector<Location*> adjacentLocations, std::vector<Npc*> npcs)
 {
     this->name = name;
     this->adjacentLocations = adjacentLocations;

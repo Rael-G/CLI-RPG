@@ -399,6 +399,6 @@ FodyWeavers.xsd
 
 #Pessoal
 bin/
-Makefile
+tmp/
 .vscode
 

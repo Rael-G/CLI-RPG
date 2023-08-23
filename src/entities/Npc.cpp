@@ -1,12 +1,16 @@
-#include "Npc.hpp"
+#include "entities/Npc.hpp"
 
-    std::string Npc::GetName()
-    {
-        return name;
-    }
+int Npc::GetId()
+{
+    return id;
+}
+std::string Npc::GetName()
+{
+    return name;
+}
 
-    void Npc::Talk()
-    {
-        ConsoleUtils::ClearScreen();
-        ConsoleUtils::PrintTextSlowly("Not Yet Implemented.\n\n", 1);
-    }
+void Npc::Talk()
+{
+    ConsoleUtils::ClearScreen();
+    ConsoleUtils::PrintTextSlowly("Not Yet Implemented.\n\n", 1);
+}

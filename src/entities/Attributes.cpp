@@ -1,14 +1,11 @@
-#include "Attributes.hpp"
+#include "entities/Attributes.hpp"
 
-Attributes::Attributes()
+Attributes::Attributes(int health, int mana, int strength, 
+    int dexterity, int intelligence, int faith, int charisma)
+        : health(health), mana(mana), strength(strength), dexterity(dexterity), 
+        intelligence(intelligence), faith(faith), charisma(charisma)
 {
-    health = 10;
-    mana = 10;
-    strength = 10;
-    dexterity = 10;
-    intelligence = 10;
-    faith = 10;
-    charisma = 10;
+
 }
 
 int Attributes::GetHealth()

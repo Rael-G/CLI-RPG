@@ -1,7 +1,4 @@
-#include "CreationMenu.hpp"
-#include "Game.hpp"
-#include "Hero.hpp"
-#include "Village.hpp"
+#include "ui/CreationMenu.hpp"
 
 CreationMenu::CreationMenu() : UserInterface()
 {
@@ -33,9 +30,8 @@ void CreationMenu::Finish()
     }
 
     Hero *hero = new Hero(name, new Attributes());
-    Village *location = new Village("Strange Village");
 
-    UserInterface *ui = new Game(hero, location);
+    UserInterface *ui = new Game(hero, World::GetLocation(0));
     ui->Run();
     delete ui;
 }

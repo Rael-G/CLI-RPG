@@ -3,9 +3,9 @@
 #include <map>
 #include <iostream>
 #include <algorithm>
-#include "UserInterface.hpp"
-#include "ConsoleUtils.hpp"
-#include "CreationMenu.hpp"
+#include "ui/UserInterface.hpp"
+#include "utils/ConsoleUtils.hpp"
+#include "ui/CreationMenu.hpp"
 
 class StartMenu : public UserInterface 
 {

@@ -1,50 +1,55 @@
-#include "Location.hpp"
+#include "locations/Location.hpp"
 
-    std::string Location::GetName()
+int Location::GetId()
+{
+    return id;
+}
+
+std::string Location::GetName()
+{
+    return name;
+}
+
+std::string Location::ToString()
+{
+    return "You are in " + name + ".";
+}
+
+void Location::Travel()
+{
+    //BUG
+    //Printa mas a tela é limpa logo apos
+    ConsoleUtils::ClearScreen();
+
+    std::string msg {""};
+    std::string locations {""};
+    std::string numLocations {""};
+
+    if (adjacentLocations.empty())
     {
-        return name;
+        msg = "There is no Adjacent Location.\n\n";
     }
-
-    std::string Location::ToString()
+    else
     {
-        return "You are in " + name + ".\n";
-    }
-
-    void Location::Travel()
-    {
-        //BUG
-        //Printa mas a tela é limpa logo apos
-        ConsoleUtils::ClearScreen();
-
-        std::string msg {""};
-        std::string locations {""};
-        std::string numLocations {""};
-
-        if (adjacentLocations.empty())
+        for (int i = 1; i <= adjacentLocations.size(); i++)
         {
-            msg = "There is no Adjacent Location.\n\n";
+            numLocations += "<" + std::to_string(i) + "> ";
         }
-        else
+
+        locations = "You can travel to " + adjacentLocations[0]->name;
+        for (int i = 1; i < adjacentLocations.size() - 1; i++)
         {
-            for (int i = 1; i <= adjacentLocations.size(); i++)
-            {
-                numLocations += "<" + std::to_string(i) + "> ";
-            }
-
-            locations = "You can travel to " + adjacentLocations[0]->name;
-            for (int i = 1; i < adjacentLocations.size() - 1; i++)
-            {
-                locations += ", " + adjacentLocations[i]->name;
-            }
-            locations += " and " + adjacentLocations.back()->name + "\n";
-
-            msg = locations + numLocations + "\n";
+            locations += ", " + adjacentLocations[i]->name;
         }
-        
-        ConsoleUtils::PrintTextSlowly(msg, 50);
-    }
+        locations += " and " + adjacentLocations.back()->name + "\n";
 
-    std::vector<std::pair<std::string, std::function<void ()>>>Location::GetCommands() 
-    {
-        return localCommands;
+        msg = locations + numLocations + "\n";
     }
+    
+    ConsoleUtils::PrintTextSlowly(msg, 50);
+}
+
+std::vector<std::pair<std::string, std::function<void ()>>>Location::GetCommands() 
+{
+    return localCommands;
+}

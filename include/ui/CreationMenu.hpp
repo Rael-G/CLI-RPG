@@ -1,7 +1,9 @@
 #include <string>
-#include "UserInterface.hpp"
-#include "Attributes.hpp"
-#include "Hero.hpp"
+#include "ui/UserInterface.hpp"
+#include "entities/Attributes.hpp"
+#include "entities/Hero.hpp"
+#include "global/World.hpp"
+#include "ui/Game.hpp"
 
 #pragma once
 

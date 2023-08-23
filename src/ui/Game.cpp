@@ -1,4 +1,4 @@
-#include "Game.hpp"
+#include "ui/Game.hpp"
 
 Game::Game(Hero *hero, Location *location) : UserInterface() 
 {
@@ -21,6 +21,13 @@ std::string Game::ToString()
 void Game::Save()
 {
     ConsoleUtils::ClearScreen();
-    ConsoleUtils::PrintTextSlowly("Not Yet Implemented.\n\n", 1);
-}
 
+    std::string msg = "Success!\n\n";
+    std::string err = "Something went Wrong!\n\n";
+
+    std::unique_ptr<SaveManager> sm = DependencyInjector::GetSaveManager();
+
+    sm->Save(hero, location) 
+        ? ConsoleUtils::PrintTextSlowly(msg, 50) 
+        : ConsoleUtils::PrintTextSlowly(err, 50);
+}

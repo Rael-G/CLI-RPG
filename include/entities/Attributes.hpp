@@ -14,7 +14,8 @@ class Attributes
         int charisma;
 
     public:
-        Attributes();
+        Attributes(int health = 10, int mana = 10, int strength = 10, 
+            int dexterity = 10, int intelligence = 10, int faith = 10, int charisma = 10);
         int GetHealth();
         int GetMana();
         int GetStrength();

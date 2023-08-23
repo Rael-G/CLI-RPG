@@ -1,4 +1,4 @@
-#include "UserInterface.hpp"
+#include "ui/UserInterface.hpp"
 
 UserInterface::UserInterface()
 {

@@ -1,8 +1,10 @@
 #pragma once
 
-#include "UserInterface.hpp"
-#include "Hero.hpp"
-#include "Location.hpp"
+#include "ui/UserInterface.hpp"
+#include "entities/Hero.hpp"
+#include "locations/Location.hpp"
+#include "utils/SaveManager.hpp"
+#include "global/DependencyInjector.hpp"
 
 class Game : public UserInterface
 {
