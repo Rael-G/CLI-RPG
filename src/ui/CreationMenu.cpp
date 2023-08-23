@@ -31,7 +31,7 @@ void CreationMenu::Finish()
 
     Hero *hero = new Hero(name, new Attributes());
 
-    UserInterface *ui = new Game(hero, World::GetLocation(0));
+    UserInterface *ui = new Game(hero, World::GetLocation("V01"));
     ui->Run();
     delete ui;
 }

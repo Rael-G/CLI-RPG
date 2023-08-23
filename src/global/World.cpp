@@ -1,22 +1,42 @@
 #include "global/World.hpp"
+#include "exceptions/WorldObjectException.hpp"
 
-std::map<int, Location*> World::locations = {
+std::map<std::string, Location*> World::locations = {
     { 
-        0, new Village("Strange Village", std::vector<Location*> {}, std::vector<Npc*> {})
+        "V01", new Village("V01", "Strange Village", 
+        std::vector<std::string> 
+            {
+                "R01"
+            }, 
+        std::vector<std::string> 
+            {
+                
+            })
+    },
+    { 
+        "R01", new Village("R01", "Bad Village", 
+        std::vector<std::string> 
+            {
+                "V01"
+            }, 
+        std::vector<std::string> 
+            {
+                
+            })
     }
 };
 
-std::map<int, Npc*> World::npcs = {
+std::map<std::string, Npc*> World::npcs = {
 
 };
 
-Location* World::GetLocation(int id)
+Location* World::GetLocation(std::string id)
 {
     auto it = locations.find(id);
 
     if (it == locations.end())
     {
-        throw std::runtime_error("ERROR: Location not found. " + std::to_string(id));
+        throw WorldObjectException("Location not found: " + id + ". ");
     }
     else
     {
@@ -24,13 +44,13 @@ Location* World::GetLocation(int id)
     }
 }
 
-Npc* World::GetNpc(int id)
+Npc* World::GetNpc(std::string id)
 {
     auto it = npcs.find(id);
 
     if (it == npcs.end())
     {
-        throw std::runtime_error("ERROR: NPC not found. " + std::to_string(id));
+        throw WorldObjectException("NPC not found: " + id + ". ");
     }
     else
     {

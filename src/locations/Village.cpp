@@ -1,12 +1,13 @@
 #include "locations/Village.hpp"
 
-Village::Village(std::string name, 
-    std::vector<Location*> adjacentLocations, std::vector<Npc*> npcs)
+Village::Village(std::string id, std::string name, 
+    std::vector<std::string> adjacentLocations, std::vector<std::string> npcs)
+    : npcs(npcs)
 {
+    this->id = id;
     this->name = name;
     this->adjacentLocations = adjacentLocations;
-    this->npcs = npcs;
-
+    
     localCommands.push_back({"talk", std::bind(&Village::Talk, this)});
 }
 

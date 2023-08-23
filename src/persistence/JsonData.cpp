@@ -30,12 +30,18 @@ std::list<SaveGame> JsonData::LoadData()
 {
     std::list<json> jsons = GetJsons();
     std::list<SaveGame> saves;
-
     for (json j : jsons)
     {
-        saves.push_back(SaveGame::FromJson(j));
+        try
+        {
+            saves.push_back(SaveGame::FromJson(j));
+        }
+        catch(const std::exception& e)
+        {
+           corrupt++;
+        }
     }
-
+    
     return saves;
 }
 std::list<json> JsonData::GetJsons()
@@ -43,7 +49,7 @@ std::list<json> JsonData::GetJsons()
     std::list<std::string> paths;
     fs::path path = "./.save/";
 
-    if (!fs::exists(path) || !path.empty())
+    if (!fs::exists(path) || path.empty())
     {
         throw EmptySaveFolderException();
     }

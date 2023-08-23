@@ -1,6 +1,7 @@
 #include "locations/Location.hpp"
+#include "global/World.hpp"
 
-int Location::GetId()
+std::string Location::GetId()
 {
     return id;
 }
@@ -27,6 +28,7 @@ void Location::Travel()
 
     if (adjacentLocations.empty())
     {
+        //Supposed to never happen
         msg = "There is no Adjacent Location.\n\n";
     }
     else
@@ -36,12 +38,12 @@ void Location::Travel()
             numLocations += "<" + std::to_string(i) + "> ";
         }
 
-        locations = "You can travel to " + adjacentLocations[0]->name;
+        locations = "You can travel to " + World::GetLocation(adjacentLocations[0])->GetName();
         for (int i = 1; i < adjacentLocations.size() - 1; i++)
         {
-            locations += ", " + adjacentLocations[i]->name;
+            locations += ", " + World::GetLocation(adjacentLocations[i])->GetName();
         }
-        locations += " and " + adjacentLocations.back()->name + "\n";
+        locations += " and " +  World::GetLocation(adjacentLocations.back())->GetName()+ "\n";
 
         msg = locations + numLocations + "\n";
     }

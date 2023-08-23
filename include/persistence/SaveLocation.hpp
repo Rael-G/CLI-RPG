@@ -9,7 +9,6 @@ using json = nlohmann::json;
 struct SaveLocation
 {
     Location *location;
-    int id;
 
     SaveLocation(Location *location);
     json ToJson() const;

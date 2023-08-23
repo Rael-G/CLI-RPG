@@ -8,9 +8,9 @@
 class Location 
 {
     protected:
-        int id;
+        std::string id;
         std::string name;
-        std::vector<Location*> adjacentLocations;
+        std::vector<std::string> adjacentLocations;
         std::vector<std::pair<std::string, std::function<void ()>>> localCommands
         {
             {"travel", std::bind(&Location::Travel, this)}
@@ -18,7 +18,7 @@ class Location
     public:
         virtual ~Location() {}
         std::string GetName();
-        int GetId();
+        std::string GetId();
         virtual std::string ToString();
         virtual std::vector<std::pair<std::string, std::function<void ()>>>GetCommands();
         void Travel();

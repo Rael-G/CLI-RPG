@@ -7,10 +7,9 @@
 
 struct World
 {
-    static std::map<int, Location*> locations;
-    static std::map<int, Npc*> npcs;
+    static std::map<std::string, Location*> locations;
+    static std::map<std::string, Npc*> npcs;
 
-    static Location* GetLocation(int id);
-
-    static Npc* GetNpc(int id);
+    static Location* GetLocation(std::string id);
+    static Npc* GetNpc(std::string id);
 };

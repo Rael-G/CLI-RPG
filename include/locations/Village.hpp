@@ -8,12 +8,12 @@
 class Village : public Location
 {
     private:
-        std::vector<Npc*> npcs;
+        std::vector<std::string> npcs;
 
     public:
-        Village(std::string name, 
-            std::vector<Location*> adjacentLocations = {}, 
-            std::vector<Npc*> npcs = {});
+        Village(std::string id, std::string name, 
+            std::vector<std::string> adjacentLocations, 
+            std::vector<std::string> npcs);
 
         void Talk();
 };

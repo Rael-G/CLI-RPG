@@ -6,7 +6,7 @@
 class Data 
 {
     protected:
-    int corrupt;
+        int corrupt;
         
     public:
         virtual bool SaveData(SaveGame saveGame) = 0;

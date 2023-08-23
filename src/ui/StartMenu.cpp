@@ -67,7 +67,7 @@ void StartMenu::Load()
     }
     catch(const CorruptedSaveGameException& e)
     {
-         ConsoleUtils::PrintTextSlowly(e.Message() + "\n");
+        ConsoleUtils::PrintTextSlowly(e.Message() + "\n");
     }
 
     std::string msg {"<return>\n"};
