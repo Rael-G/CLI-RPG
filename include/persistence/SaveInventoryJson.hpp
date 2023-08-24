@@ -4,7 +4,7 @@
 #include <string>
 #include "entities/Item.hpp"
 
-struct SaveInventory
+struct SaveInventoryJson
 {
     std::list<Item*> inventory;
     std::list<std::string> inventoryStr;

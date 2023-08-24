@@ -6,12 +6,12 @@
 #include "exceptions/CorruptedSaveGameException.hpp"
 using json = nlohmann::json;
 
-struct SaveLocation
+struct SaveLocationJson
 {
     Location *location;
 
-    SaveLocation(Location *location);
+    SaveLocationJson(Location *location);
     json ToJson() const;
-    static SaveLocation FromJson(json j);
+    static SaveLocationJson FromJson(json j);
 
 };

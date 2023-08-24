@@ -1,24 +1,13 @@
 #pragma once
 
-#include <string>
-#include "utils/Utility.hpp"
-#include "persistence/SaveLocation.hpp"
-#include "persistence/SaveHero.hpp"
-#include "external/nlohmann/json.hpp"
-#include "exceptions/CorruptedSaveGameException.hpp"
-
-using json = nlohmann::json;
+#include "entities/Hero.hpp"
+#include "locations/Location.hpp"
 
 class SaveGame
 {
     public:
         Hero *hero;
         Location *location;
-        SaveHero saveHero;
-        SaveLocation saveLocation;
-        std::string date;
-        
-        SaveGame(SaveHero hero, SaveLocation location, std::string date = Utility::GetTime());
-        json ToJson() const;
-        static SaveGame FromJson(json j);
+
+        SaveGame(Hero *hero, Location *location);
 };

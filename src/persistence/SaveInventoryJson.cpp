@@ -1,6 +1,6 @@
-#include "persistence/SaveInventory.hpp"
+#include "persistence/SaveInventoryJson.hpp"
 
-std::list<Item*> SaveInventory::FromStrToItem(std::list<std::string> inventoryStr)
+std::list<Item*> SaveInventoryJson::FromStrToItem(std::list<std::string> inventoryStr)
 {
     std::list<Item*> inventory;
 
@@ -13,7 +13,7 @@ std::list<Item*> SaveInventory::FromStrToItem(std::list<std::string> inventorySt
     return inventory;
 }
 
-std::list<std::string> SaveInventory::FromItemToStr(std::list<Item*> inventory)
+std::list<std::string> SaveInventoryJson::FromItemToStr(std::list<Item*> inventory)
 {
     std::list<std::string> inventoryStr;
 

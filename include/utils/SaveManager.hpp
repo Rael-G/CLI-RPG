@@ -11,7 +11,8 @@ class SaveManager
         Data *data;        
 
     public:
-        SaveManager(Data *data) : data(data) {}
+        SaveManager(Data *data);
+        ~SaveManager();
 
         bool Save(Hero *hero, Location *location);
         std::list<SaveGame> Load();

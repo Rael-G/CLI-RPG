@@ -1,6 +1,6 @@
-#include "persistence/SaveHero.hpp"
+#include "persistence/SaveHeroJson.hpp"
 
-SaveHero::SaveHero(Hero *hero) : hero(hero) 
+SaveHeroJson::SaveHeroJson(Hero *hero) : hero(hero) 
 {
     name = hero->GetName();
     level = hero->GetLevel();
@@ -15,10 +15,10 @@ SaveHero::SaveHero(Hero *hero) : hero(hero)
     faith = attributes->GetFaith();
     charisma = attributes->GetCharisma();
 
-    inventoryStr = SaveInventory::FromItemToStr(inventory);
+    inventoryStr = SaveInventoryJson::FromItemToStr(inventory);
 }
 
-json SaveHero::ToJson() const 
+json SaveHeroJson::ToJson() const 
 {
     json hero;
     hero["name"] = name;
@@ -36,7 +36,7 @@ json SaveHero::ToJson() const
     return hero;
 }
 
-SaveHero SaveHero::FromJson(json j)
+SaveHeroJson SaveHeroJson::FromJson(json j)
 {
     std::string name = j["name"];
     int level = j["level"];
@@ -54,7 +54,7 @@ SaveHero SaveHero::FromJson(json j)
 
     std::list<std::string> inventory = j["inventory"];
 
-    Hero *hero = new Hero(name, level, attributes, SaveInventory::FromStrToItem(inventory));
+    Hero *hero = new Hero(name, level, attributes, SaveInventoryJson::FromStrToItem(inventory));
 
-    return SaveHero(hero);
+    return SaveHeroJson(hero);
 }

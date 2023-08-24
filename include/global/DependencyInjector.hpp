@@ -5,5 +5,5 @@
 
 struct DependencyInjector
 {
-    static std::unique_ptr<SaveManager> GetSaveManager();
+    static SaveManager* GetSaveManager();
 };

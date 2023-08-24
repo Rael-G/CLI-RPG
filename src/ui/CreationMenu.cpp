@@ -1,5 +1,4 @@
 #include "ui/CreationMenu.hpp"
-#include "ui/AttributesDefinition.hpp"
 
 CreationMenu::CreationMenu() : UserInterface()
 {

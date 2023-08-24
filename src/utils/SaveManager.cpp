@@ -1,12 +1,18 @@
 #include "utils/SaveManager.hpp"
 
+SaveManager::SaveManager(Data *data)
+    : data(data) {}
+
+SaveManager::~SaveManager()
+{
+    delete data;
+}
+
 bool SaveManager::Save(Hero *hero, Location *location)
 {
-    SaveHero sh = SaveHero(hero);
-    SaveLocation sl = SaveLocation(location);
-    SaveGame save = SaveGame(sh, sl);
+    SaveGame save = SaveGame(hero, location);
 
-    return data->SaveData(save);
+    return data->SaveData(save);;
 }
 
 std::list<SaveGame> SaveManager::Load()

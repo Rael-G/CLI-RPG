@@ -49,7 +49,7 @@ void StartMenu::Load()
     std::list<SaveGame> saves;
     int corrupt {0};
 
-    std::unique_ptr<SaveManager> sm = DependencyInjector::GetSaveManager();
+    SaveManager *sm = DependencyInjector::GetSaveManager();
     try
     {
         saves = sm->Load();
@@ -62,11 +62,13 @@ void StartMenu::Load()
     }
     catch(const EmptySaveFolderException& e)
     {
+
        ConsoleUtils::PrintTextSlowly(e.Message() + "\n");
        return;
     }
     catch(const CorruptedSaveGameException& e)
     {
+
         ConsoleUtils::PrintTextSlowly(e.Message() + "\n");
     }
 
@@ -103,6 +105,8 @@ void StartMenu::Load()
         ConsoleUtils::ClearScreen();
         ConsoleUtils::PrintTextSlowly("Type Exactly the name of the hero you want to load\n", 50);
     }
+
+    delete sm;
 }
 
 void StartMenu::Options()

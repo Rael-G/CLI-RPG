@@ -4,6 +4,7 @@
 #include "entities/Hero.hpp"
 #include "global/World.hpp"
 #include "ui/Game.hpp"
+#include "ui/AttributesDefinition.hpp"
 
 #pragma once
 

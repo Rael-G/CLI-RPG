@@ -25,9 +25,10 @@ void Game::Save()
     std::string msg = "Success!\n\n";
     std::string err = "Something went Wrong!\n\n";
 
-    std::unique_ptr<SaveManager> sm = DependencyInjector::GetSaveManager();
+    SaveManager *sm = DependencyInjector::GetSaveManager();
 
     sm->Save(hero, location) 
         ? ConsoleUtils::PrintTextSlowly(msg, 50) 
         : ConsoleUtils::PrintTextSlowly(err, 50);
+    delete sm;
 }

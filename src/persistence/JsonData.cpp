@@ -1,10 +1,13 @@
 #include "persistence/JsonData.hpp"
-#include "exceptions/EmptySaveFolderException.hpp"
 
-bool JsonData::SaveData(SaveGame saveGame)
+using json = nlohmann::json;
+
+bool JsonData::SaveData(SaveGame SaveGame)
 {
-    json save = saveGame.ToJson();
-    std::string saveName = saveGame.hero->GetName();
+    SaveGameJson *saveGameJson = new SaveGameJson(SaveGame.hero, SaveGame.location);
+
+    json save = saveGameJson->ToJson();
+    std::string saveName = saveGameJson->saveHeroJson.name;
 
     fs::path path = "./.save/";
 
@@ -29,12 +32,13 @@ bool JsonData::SaveData(SaveGame saveGame)
 std::list<SaveGame> JsonData::LoadData()
 {
     std::list<json> jsons = GetJsons();
+
     std::list<SaveGame> saves;
     for (json j : jsons)
     {
         try
         {
-            saves.push_back(SaveGame::FromJson(j));
+            saves.push_back(SaveGameJson::FromJson(j));
         }
         catch(const std::exception& e)
         {

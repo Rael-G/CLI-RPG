@@ -3,13 +3,13 @@
 #include <string>
 #include <list>
 #include "entities/Hero.hpp"
-#include "persistence/SaveInventory.hpp"
 #include "exceptions/CorruptedSaveGameException.hpp"
 #include "external/nlohmann/json.hpp"
+#include "persistence/SaveInventoryJson.hpp"
 
 using json = nlohmann::json;
 
-struct SaveHero
+struct SaveHeroJson
 {
     Hero *hero;
     std::string name;
@@ -23,7 +23,7 @@ struct SaveHero
     //Inventory
     std::list<std::string> inventoryStr;
     
-    SaveHero(Hero *hero);
+    SaveHeroJson(Hero *hero);
     json ToJson() const;
-    static SaveHero FromJson(json j);
+    static SaveHeroJson FromJson(json j);
 };
