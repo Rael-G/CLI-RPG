@@ -13,6 +13,7 @@ struct SaveHero
 {
     Hero *hero;
     std::string name;
+    int level;
     Attributes *attributes;
     std::list<Item*> inventory;
 

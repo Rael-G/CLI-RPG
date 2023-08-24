@@ -13,4 +13,5 @@ class ConsoleUtils
         static void ClearScreen();
         static void PrintTextSlowly(const std::string& text, int delayMillis = 100);
         static std::string ScanInput();
+        static std::string ScanLine();
 };

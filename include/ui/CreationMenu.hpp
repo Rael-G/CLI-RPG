@@ -11,8 +11,11 @@ class CreationMenu : public UserInterface
 {
     public:
         std::string name;
+        Attributes *attributes;
+        int points;
         std::string ToString() override;
         CreationMenu();
-        void Name();
-        void Finish();    
+        void DefName();
+        void DefAttributes();
+        void Finish();
 };

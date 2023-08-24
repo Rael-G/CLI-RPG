@@ -49,7 +49,7 @@ void Attributes::UpMana(int quantity)
 {
     mana += quantity;
 }
-void Attributes::UpStrenght(int quantity)
+void Attributes::UpStrength(int quantity)
 {
     strength += quantity;
 }

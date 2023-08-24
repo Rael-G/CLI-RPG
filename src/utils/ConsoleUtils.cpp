@@ -21,6 +21,14 @@ std::string ConsoleUtils::ScanInput()
 {
     std::string str {};
     std::cin >> str;
+    return str;
+}
+
+std::string ConsoleUtils::ScanLine()
+{
+    std::string str {};
+    std::cin.ignore();
+    std::getline(std::cin, str);
     
     return str;
 }

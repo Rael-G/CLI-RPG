@@ -28,7 +28,7 @@ class Attributes
 
         void UpHealth(int quantity);
         void UpMana(int quantity);
-        void UpStrenght(int quantity);
+        void UpStrength(int quantity);
         void UpDexterity(int quantity);
         void UpIntelligence(int quantity);
         void UpFaith(int quantity);

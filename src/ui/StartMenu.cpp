@@ -82,7 +82,7 @@ void StartMenu::Load()
     {
         ConsoleUtils::PrintTextSlowly("\n" + msg + "\n: ", 50);
 
-        input = ConsoleUtils::ScanInput();
+        input = ConsoleUtils::ScanLine();
         if (input == "return")
         {
             break;

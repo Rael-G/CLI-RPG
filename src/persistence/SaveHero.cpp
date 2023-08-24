@@ -3,6 +3,7 @@
 SaveHero::SaveHero(Hero *hero) : hero(hero) 
 {
     name = hero->GetName();
+    level = hero->GetLevel();
     attributes = hero->GetAttributes();
     inventory = hero->GetInventory();
 
@@ -21,6 +22,7 @@ json SaveHero::ToJson() const
 {
     json hero;
     hero["name"] = name;
+    hero["level"] = level;
         json attributes;
         attributes["health"] = health;
         attributes["mana"] = mana;
@@ -37,6 +39,7 @@ json SaveHero::ToJson() const
 SaveHero SaveHero::FromJson(json j)
 {
     std::string name = j["name"];
+    int level = j["level"];
     int health, mana, strength, dexterity, intelligence, faith, charisma;
     health = j["attributes"]["health"];
     mana =  j["attributes"]["mana"];
@@ -51,7 +54,7 @@ SaveHero SaveHero::FromJson(json j)
 
     std::list<std::string> inventory = j["inventory"];
 
-    Hero *hero = new Hero(name, attributes, SaveInventory::FromStrToItem(inventory));
+    Hero *hero = new Hero(name, level, attributes, SaveInventory::FromStrToItem(inventory));
 
     return SaveHero(hero);
 }
