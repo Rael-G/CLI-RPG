@@ -402,3 +402,4 @@ bin/
 tmp/
 .vscode
 .save
+build/
