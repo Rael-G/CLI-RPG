@@ -72,14 +72,14 @@ void Attributes::UpCharisma(int quantity)
 
 std::string Attributes::ToString()
 {
-std::string str = 
-    "HP: " + std::to_string(GetHealth()) + "\n"
-    + "MANA: " + std::to_string(GetMana()) + "\n"
-    + "STR: " + std::to_string(GetStrength()) + "\n"
-    + "DXT: " + std::to_string(GetDexterity()) + "\n"
-    + "INT: " + std::to_string(GetDexterity()) + "\n"
-    + "FT: " + std::to_string(GetDexterity()) + "\n"
-    + "CHA: " + std::to_string(GetCharisma()) + "\n";
+    std::string str =
+        "HP: " + std::to_string(GetHealth())
+        + ", MANA: " + std::to_string(GetMana())
+        + ", STR: " + std::to_string(GetStrength())
+        + ", DXT: " + std::to_string(GetDexterity())
+        + ", INT: " + std::to_string(GetDexterity())
+        + ", FT: " + std::to_string(GetDexterity())
+        + ", CHA: " + std::to_string(GetCharisma());
 
     return str;
 }

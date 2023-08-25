@@ -28,7 +28,7 @@ void Game::Save()
     SaveManager *sm = DependencyInjector::GetSaveManager();
 
     sm->Save(hero, location) 
-        ? ConsoleUtils::PrintTextSlowly(msg, 50) 
-        : ConsoleUtils::PrintTextSlowly(err, 50);
+        ? ConsoleUtils::PrintTextSlowly(msg) 
+        : ConsoleUtils::PrintTextSlowly(err);
     delete sm;
 }

@@ -11,7 +11,7 @@ void UserInterface::Run()
     std::string input {""};
     while (input != "return")
     {
-        ConsoleUtils::PrintTextSlowly(this->ToString() + "\n\n", 1);
+        ConsoleUtils::PrintTextSlowly(this->ToString() + "\n\n", -1);
         ShowCommands();
         std::string msg {"> "};
         ConsoleUtils::PrintTextSlowly(msg, 1);
@@ -41,7 +41,7 @@ void UserInterface::ShowCommands()
     }
     msg += "\n";
     
-    ConsoleUtils::PrintTextSlowly(msg, 1);
+    ConsoleUtils::PrintTextSlowly(msg);
 }
 
 void UserInterface::Input(std::string input)
@@ -65,7 +65,7 @@ void UserInterface::Input(std::string input)
 
     ConsoleUtils::ClearScreen();
     std::string msg {"Invalid Command!\n\n"};
-    ConsoleUtils::PrintTextSlowly(msg, 1);
+    ConsoleUtils::PrintTextSlowly(msg);
 }
 
 void UserInterface::Return()

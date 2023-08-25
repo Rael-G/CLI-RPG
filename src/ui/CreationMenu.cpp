@@ -12,22 +12,13 @@ CreationMenu::CreationMenu() : UserInterface()
 
 std::string CreationMenu::ToString()
 {
-    return "Who Are You?\n\n"
-       "Name: " + name + "\n"
-       + "Atributes:\n"
-       + "Health: " + std::to_string(attributes->GetHealth())
-       + ", Mana: " + std::to_string(attributes->GetMana())
-       + ", Strength: " + std::to_string(attributes->GetStrength())
-       + ", Dexterity: " + std::to_string(attributes->GetDexterity())
-       + ", Intelligence: " + std::to_string(attributes->GetIntelligence())
-       + ", Faith: " + std::to_string(attributes->GetFaith())
-       + ", Charisma: " + std::to_string(attributes->GetCharisma());
+    return "Who Are You?\n\n" + attributes->ToString();
 }
 
 void CreationMenu::DefName()
 {
     std::string msg {"Tell your name: "};
-    ConsoleUtils::PrintTextSlowly(msg, 25);
+    ConsoleUtils::PrintTextSlowly(msg);
     name = ConsoleUtils::ScanLine();
     ConsoleUtils::ClearScreen();
 }
@@ -46,13 +37,13 @@ void CreationMenu::Finish()
     if (name == "" || name == " ")
     {
         std::string msg {"You need to choose a valid name.\n\n"};
-        ConsoleUtils::PrintTextSlowly(msg, 25);
+        ConsoleUtils::PrintTextSlowly(msg);
         return;
     }
     else if (points != 0)
     {
         std::string msg {"You still have points to spent on attributes.\n\n"};
-        ConsoleUtils::PrintTextSlowly(msg, 25);
+        ConsoleUtils::PrintTextSlowly(msg);
         return;
     }
 

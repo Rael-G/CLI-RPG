@@ -18,15 +18,7 @@ AttributesDefinition::AttributesDefinition(Attributes *attributes, int &points)
 
 std::string AttributesDefinition::ToString()
 {
-    return "Attributes:\n"
-       "Health: " + std::to_string(attributes->GetHealth())
-       + ", Mana: " + std::to_string(attributes->GetMana())
-       + ", Strength: " + std::to_string(attributes->GetStrength())
-       + ", Dexterity: " + std::to_string(attributes->GetDexterity())
-       + ", Intelligence: " + std::to_string(attributes->GetIntelligence())
-       + ", Faith: " + std::to_string(attributes->GetFaith())
-       + ", Charisma: " + std::to_string(attributes->GetCharisma())
-       + "\nYou have " + std::to_string(points) + " points to spent.";
+    return "Attributes:\n" + attributes->ToString();
 }
 
 void AttributesDefinition::Reset()
@@ -47,7 +39,7 @@ int AttributesDefinition::Define(std::string input)
     catch(const std::invalid_argument& e)
     {
         ConsoleUtils::ClearScreen();
-        ConsoleUtils::PrintTextSlowly("\nInvalid input.\n\n", 50);
+        ConsoleUtils::PrintTextSlowly("\nInvalid input.\n\n");
         return 0;
     }
 

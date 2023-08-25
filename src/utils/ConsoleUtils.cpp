@@ -6,11 +6,13 @@
     const char* ConsoleUtils::clearCommand = "cls";
 #endif
 
-void ConsoleUtils::ClearScreen() {
+void ConsoleUtils::ClearScreen() 
+{
     std::system(ConsoleUtils::clearCommand);
 }
 
-void ConsoleUtils::PrintTextSlowly(const std::string& text, int delayMillis) {
+void ConsoleUtils::PrintTextSlowly(const std::string& text, int delayMillis) 
+{
     for (char c : text) {
         std::cout << c << std::flush;
         std::this_thread::sleep_for(std::chrono::milliseconds(delayMillis));

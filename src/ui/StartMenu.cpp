@@ -82,7 +82,7 @@ void StartMenu::Load()
     std::string input {""};
     while(input != "return")
     {
-        ConsoleUtils::PrintTextSlowly("\n" + msg + "\n: ", 50);
+        ConsoleUtils::PrintTextSlowly("\n" + msg + "\n: ");
 
         input = ConsoleUtils::ScanLine();
         if (input == "return")
@@ -103,7 +103,7 @@ void StartMenu::Load()
         }
         
         ConsoleUtils::ClearScreen();
-        ConsoleUtils::PrintTextSlowly("Type Exactly the name of the hero you want to load\n", 50);
+        ConsoleUtils::PrintTextSlowly("Type Exactly the name of the hero you want to load\n");
     }
 
     delete sm;
@@ -112,7 +112,7 @@ void StartMenu::Load()
 void StartMenu::Options()
 {
     ConsoleUtils::ClearScreen();
-    ConsoleUtils::PrintTextSlowly("Not Yet Implemented\n\n", 1);
+    ConsoleUtils::PrintTextSlowly("Not Yet Implemented\n\n");
 }
 
 void StartMenu::Help()
@@ -120,5 +120,5 @@ void StartMenu::Help()
     ConsoleUtils::ClearScreen();
 
     std::string msg {"This is a  Command-Text based RPG. Type your command at the command line and magic happens!\n\n"};
-    ConsoleUtils::PrintTextSlowly(msg, 50);
+    ConsoleUtils::PrintTextSlowly(msg);
 }
