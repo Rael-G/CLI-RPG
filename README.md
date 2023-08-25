@@ -42,8 +42,8 @@ Step 2: Clone the Repository
 Step 3: Build and Compile
 
  Create a directory to build your project: `mkdir build`  
- Build: `./build/cmake ..`  
- Compile it: `./build/make`
+ Build: `cd build` `./cmake ..`  
+ Compile it: `make`
  
 Step 4: Enjoy  
- `./build/bin/clirpg`  
+ `./bin/clirpg`  
