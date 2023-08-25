@@ -61,7 +61,7 @@ std::list<json> JsonData::GetJsons()
     for (auto& entry : fs::directory_iterator(path))
     {
         if (entry.is_regular_file()){
-            paths.push_back(entry.path());
+            paths.push_back(entry.path().string());
         }
     }
 
