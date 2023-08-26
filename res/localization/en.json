@@ -1,0 +1,22 @@
+{
+  "CMD-RETURN": "return",
+  "CMD-EXIT": "exit",
+  "CMD-NEW": "new",
+  "CMD-LOAD": "load",
+  "CMD-OPTIONS": "options",
+  "CMD-HELP": "help",
+  "CMD-SAVE": "save",
+  "CMD-NAME": "name",
+  "CMD-ATTRIBUTES": "attributes",
+  "CMD-FINISH": "finish",
+  "CMD-RESET": "reset",
+  "CMD-TRAVEL": "travel",
+  "CMD-TALK": "talk",
+  "ATB-HEALTH": "health",
+  "ATB-MANA": "mana",
+  "ATB-STRENGTH": "strength",
+  "ATB-DEXTERITY": "dexterity",
+  "ATB-INTELLIGENCE": "intelligence",
+  "ATB-FAITH": "faith",
+  "ATB-CHARISMA": "charisma"
+}

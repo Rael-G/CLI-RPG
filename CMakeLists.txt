@@ -26,3 +26,14 @@ add_executable(${PROJECT_NAME} ${SRCS})
 
 # Set the output directory for the executable
 set_target_properties(${PROJECT_NAME} PROPERTIES RUNTIME_OUTPUT_DIRECTORY ${BIN_DIR})
+
+# From /res to /bin/data
+set(RES_SOURCE_DIR "${CMAKE_SOURCE_DIR}/res")
+set(DATA_DEST_DIR "${CMAKE_BINARY_DIR}/bin/data")
+add_custom_command(
+    TARGET ${PROJECT_NAME} POST_BUILD
+    COMMAND ${CMAKE_COMMAND} -E copy_directory
+    ${RES_SOURCE_DIR}
+    ${DATA_DEST_DIR}
+    COMMENT "Copying resources to output directory"
+)

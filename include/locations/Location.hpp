@@ -13,7 +13,7 @@ class Location
         std::vector<std::string> adjacentLocations;
         std::vector<std::pair<std::string, std::function<void ()>>> localCommands
         {
-            {"travel", std::bind(&Location::Travel, this)}
+            {"CMD-TRAVEL", std::bind(&Location::Travel, this)}
         };
     public:
         virtual ~Location() {}

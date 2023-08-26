@@ -1,7 +1,7 @@
-#include "ui/StartMenu.hpp"
+#include <ui/StartMenu.hpp>
 
-int main(){
-    
+int main()
+{
     ConsoleUtils::ClearScreen();
     UserInterface *ui = new StartMenu();
     ui->Run();

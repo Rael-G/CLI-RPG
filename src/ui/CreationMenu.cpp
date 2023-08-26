@@ -1,10 +1,10 @@
-#include "ui/CreationMenu.hpp"
+#include <ui/CreationMenu.hpp>
 
 CreationMenu::CreationMenu() : UserInterface()
 {
-    subCommands.push_back({"name", std::bind(&CreationMenu::DefName, this)});
-    subCommands.push_back({"attributes", std::bind(&CreationMenu::DefAttributes, this)});
-    subCommands.push_back({"finish", std::bind(&CreationMenu::Finish, this)});
+    subCommands.push_back({"CMD-NAME", std::bind(&CreationMenu::DefName, this)});
+    subCommands.push_back({"CMD-ATTRIBUTES", std::bind(&CreationMenu::DefAttributes, this)});
+    subCommands.push_back({"CMD-FINISH", std::bind(&CreationMenu::Finish, this)});
     
     attributes = new Attributes();
     points = 20;
@@ -12,7 +12,9 @@ CreationMenu::CreationMenu() : UserInterface()
 
 std::string CreationMenu::ToString()
 {
-    return "Who Are You?\n\n" + attributes->ToString();
+    return "Who Are You?\n\n"
+        + name + "\n"
+        + attributes->ToString();
 }
 
 void CreationMenu::DefName()

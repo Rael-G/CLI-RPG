@@ -5,7 +5,7 @@ Game::Game(Hero *hero, Location *location) : UserInterface()
     this->hero = hero;
     this->location = location;
 
-    commands.push_back({"save", std::bind(&Game::Save, this)});
+    commands.push_back({"CMD-SAVE", std::bind(&Game::Save, this)});
 
     for (int i = 0; i < location->GetCommands().size(); i++)
     {

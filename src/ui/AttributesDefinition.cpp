@@ -1,24 +1,27 @@
-#include "ui/AttributesDefinition.hpp"
+#include <ui/AttributesDefinition.hpp>
+#include <global/Text.hpp>
 
 AttributesDefinition::AttributesDefinition(Attributes *attributes, int &points)
 : attributes(attributes), points(points)
 {
-    commands.push_back({"reset", std::bind(&AttributesDefinition::Reset, this)});
+    commands.push_back({"CMD-RESET", std::bind(&AttributesDefinition::Reset, this)});
 
 
-    subCommands.push_back({"health", std::bind(&AttributesDefinition::DefHealth, this)});
-    subCommands.push_back({"mana", std::bind(&AttributesDefinition::DefMana, this)});
-    subCommands.push_back({"strength", std::bind(&AttributesDefinition::DefStrength, this)});
-    subCommands.push_back({"dexterity", std::bind(&AttributesDefinition::DefDexterity, this)});
-    subCommands.push_back({"intelligence", std::bind(&AttributesDefinition::DefIntelligence, this)});
-    subCommands.push_back({"faith", std::bind(&AttributesDefinition::DefFaith, this)});
-    subCommands.push_back({"charisma", std::bind(&AttributesDefinition::DefCharisma, this)});
+    subCommands.push_back({"ATB-HEALTH", std::bind(&AttributesDefinition::DefHealth, this)});
+    subCommands.push_back({"ATB-MANA", std::bind(&AttributesDefinition::DefMana, this)});
+    subCommands.push_back({"ATB-STRENGTH", std::bind(&AttributesDefinition::DefStrength, this)});
+    subCommands.push_back({"ATB-DEXTERITY", std::bind(&AttributesDefinition::DefDexterity, this)});
+    subCommands.push_back({"ATB-INTELLIGENCE", std::bind(&AttributesDefinition::DefIntelligence, this)});
+    subCommands.push_back({"ATB-FAITH", std::bind(&AttributesDefinition::DefFaith, this)});
+    subCommands.push_back({"ATB-CHARISMA", std::bind(&AttributesDefinition::DefCharisma, this)});
 
 }
 
 std::string AttributesDefinition::ToString()
 {
-    return "Attributes:\n" + attributes->ToString();
+    return "Attributes:\n"
+        "You have " + std::to_string(points)+" points to spent.\n"
+        + attributes->ToString();
 }
 
 void AttributesDefinition::Reset()
@@ -39,7 +42,7 @@ int AttributesDefinition::Define(std::string input)
     catch(const std::invalid_argument& e)
     {
         ConsoleUtils::ClearScreen();
-        ConsoleUtils::PrintTextSlowly("\nInvalid input.\n\n");
+        ConsoleUtils::PrintTextSlowly("\nInvalid input." + std::string(20, ' '), 100);
         return 0;
     }
 
@@ -48,7 +51,7 @@ int AttributesDefinition::Define(std::string input)
     {
         points += pts;
         ConsoleUtils::ClearScreen();
-        ConsoleUtils::PrintTextSlowly("\nNot enough points.\n\n");
+        ConsoleUtils::PrintTextSlowly("\nNot enough points." + std::string(20, ' '), 100);
         return 0;
     }
 
@@ -60,18 +63,17 @@ int AttributesDefinition::Define(std::string input)
 void AttributesDefinition::DefHealth()
 {
 
-    ConsoleUtils::PrintTextSlowly("Health: ");
+    ConsoleUtils::PrintTextSlowly(Text::GetText("ATB-HEALTH") + ":");
     std::string input = ConsoleUtils::ScanInput();
+    ConsoleUtils::ClearScreen();
 
     int pts = Define(input);
-
     attributes->UpHealth(pts);
-    ConsoleUtils::ClearScreen();
 }
 
 void AttributesDefinition::DefMana()
 {
-    ConsoleUtils::PrintTextSlowly("Mana: ");
+    ConsoleUtils::PrintTextSlowly(Text::GetText("ATB-MANA") + ":");
     std::string input = ConsoleUtils::ScanInput();
 
     int pts = Define(input);
@@ -82,7 +84,7 @@ void AttributesDefinition::DefMana()
 
 void AttributesDefinition::DefStrength()
 {
-    ConsoleUtils::PrintTextSlowly("Strength: ");
+    ConsoleUtils::PrintTextSlowly(Text::GetText("ATB-STRENGTH") + ":");
     std::string input = ConsoleUtils::ScanInput();
 
     int pts = Define(input);
@@ -93,7 +95,7 @@ void AttributesDefinition::DefStrength()
 
 void AttributesDefinition::DefDexterity()
 {
-    ConsoleUtils::PrintTextSlowly("Dexterity: ");
+    ConsoleUtils::PrintTextSlowly(Text::GetText("ATB-DEXTERITY") + ":");
     std::string input = ConsoleUtils::ScanInput();
 
     int pts = Define(input);
@@ -104,7 +106,7 @@ void AttributesDefinition::DefDexterity()
 
 void AttributesDefinition::DefIntelligence()
 {
-    ConsoleUtils::PrintTextSlowly("Intelligence: ");
+    ConsoleUtils::PrintTextSlowly(Text::GetText("ATB-INTELLIGENCE") + ":");
     std::string input = ConsoleUtils::ScanInput();
 
     int pts = Define(input);
@@ -115,7 +117,7 @@ void AttributesDefinition::DefIntelligence()
 
 void AttributesDefinition::DefFaith()
 {
-    ConsoleUtils::PrintTextSlowly("Faith: ");
+    ConsoleUtils::PrintTextSlowly(Text::GetText("ATB-FAITH") + ":");
     std::string input = ConsoleUtils::ScanInput();
 
     int pts = Define(input);
@@ -126,7 +128,7 @@ void AttributesDefinition::DefFaith()
 
 void AttributesDefinition::DefCharisma()
 {
-    ConsoleUtils::PrintTextSlowly("Charisma: ");
+    ConsoleUtils::PrintTextSlowly(Text::GetText("ATB-CHARISMA") + ":");
     std::string input = ConsoleUtils::ScanInput();
 
     int pts = Define(input);

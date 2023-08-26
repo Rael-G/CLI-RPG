@@ -14,10 +14,14 @@ Text* Text::GetInstance()
 
 std::string Text::GetText(std::string id)
 {
-	auto it = texts.find(id);
-	if (it != texts.end())
+	Text* instance = GetInstance();
+	auto it = instance->texts.find(id);
+	if (it != instance->texts.end())
 		return it->second;
 	else
 		return "";
 	//provisorio
 }
+
+
+//Text::GetInstance()->GetText(id)

@@ -23,5 +23,5 @@ class Text
 
 	public:
 		static Text* GetInstance();
-		std::string GetText(std::string id);
+		static std::string GetText(std::string id);
 };

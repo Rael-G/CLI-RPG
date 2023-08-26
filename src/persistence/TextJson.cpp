@@ -21,7 +21,7 @@ std::map<std::string, std::string> TextJson::GetTextData()
 
 json TextJson::GetJson()
 {
-	fs::path path = "./res/language/en.json";
+	fs::path path = "./data/localization/en.json";
 	json j;
 
 	try

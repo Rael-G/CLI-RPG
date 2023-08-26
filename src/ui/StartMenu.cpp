@@ -1,11 +1,12 @@
-#include "ui/StartMenu.hpp"
+#include <ui/StartMenu.hpp>
+#include <global/Text.hpp>
 
 StartMenu::StartMenu() : UserInterface() 
 {
-    subCommands.push_back({"new", std::bind(&StartMenu::New, this)});
-    subCommands.push_back({"load", std::bind(&StartMenu::Load, this)});
-    subCommands.push_back({"options", std::bind(&StartMenu::Options, this)});
-    subCommands.push_back({"help", std::bind(&StartMenu::Help, this)});
+    subCommands.push_back({"CMD-NEW", std::bind(&StartMenu::New, this)});
+    subCommands.push_back({"CMD-LOAD", std::bind(&StartMenu::Load, this)});
+    subCommands.push_back({"CMD-OPTIONS", std::bind(&StartMenu::Options, this)});
+    subCommands.push_back({"CMD-HELP", std::bind(&StartMenu::Help, this)});
 }
 
 std::string StartMenu::ToString()
@@ -72,7 +73,7 @@ void StartMenu::Load()
         ConsoleUtils::PrintTextSlowly(e.Message() + "\n");
     }
 
-    std::string msg {"<return>\n"};
+    std::string msg {"<" + Text::GetText("CMD - RETURN") + ">\n"};
 
     for (SaveGame save : saves)
     {
@@ -80,12 +81,12 @@ void StartMenu::Load()
     }
 
     std::string input {""};
-    while(input != "return")
+    while(input != Text::GetText("CMD - RETURN"))
     {
         ConsoleUtils::PrintTextSlowly("\n" + msg + "\n: ");
 
         input = ConsoleUtils::ScanLine();
-        if (input == "return")
+        if (input == Text::GetText("CMD - RETURN"))
         {
             break;
         }

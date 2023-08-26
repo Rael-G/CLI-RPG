@@ -1,15 +1,16 @@
-#include "ui/UserInterface.hpp"
+#include <ui/UserInterface.hpp>
+#include <global/Text.hpp>
 
 UserInterface::UserInterface()
 {
-        commands.push_back({"return", std::bind(&UserInterface::Return, this)});
-        commands.push_back({"exit", std::bind(&UserInterface::Exit, this)});
+        commands.push_back({"CMD-RETURN", std::bind(&UserInterface::Return, this)});
+        commands.push_back({"CMD-EXIT", std::bind(&UserInterface::Exit, this)});
 }
 
 void UserInterface::Run()
 {
     std::string input {""};
-    while (input != "return")
+    while (input != Text::GetText("CMD-RETURN"))
     {
         ConsoleUtils::PrintTextSlowly(this->ToString() + "\n\n", -1);
         ShowCommands();
@@ -31,13 +32,13 @@ void UserInterface::ShowCommands()
     std::string msg {"Available Commands:\n"};
     for ( int i = 0; i < commands.size(); i++)
     {
-        msg += "<" + commands[i].first + "> ";
+        msg += "<" + Text::GetText(commands[i].first) + "> ";
     }
     msg += "\n";
 
     for ( int i = 0; i < subCommands.size(); i++)
     {
-        msg += "<" + subCommands[i].first + "> ";
+        msg += "<" + Text::GetText(subCommands[i].first) + "> ";
     }
     msg += "\n";
     
@@ -48,7 +49,7 @@ void UserInterface::Input(std::string input)
 {
     for (int i = 0; i < commands.size(); i++)
     {
-        if (commands[i].first == input)
+        if (Text::GetText(commands[i].first) == input)
         {
             commands[i].second();
             return;
@@ -56,7 +57,7 @@ void UserInterface::Input(std::string input)
     }
     for (int i = 0; i < subCommands.size(); i++)
     {
-        if (subCommands[i].first == input)
+        if (Text::GetText(subCommands[i].first) == input)
         {
             subCommands[i].second();
             return;

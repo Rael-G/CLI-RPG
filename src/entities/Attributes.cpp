@@ -1,4 +1,5 @@
-#include "entities/Attributes.hpp"
+#include <entities/Attributes.hpp>
+#include <global/Text.hpp>
 
 Attributes::Attributes(int health, int mana, int strength, 
     int dexterity, int intelligence, int faith, int charisma)
@@ -73,13 +74,13 @@ void Attributes::UpCharisma(int quantity)
 std::string Attributes::ToString()
 {
     std::string str =
-        "HP: " + std::to_string(GetHealth())
-        + ", MANA: " + std::to_string(GetMana())
-        + ", STR: " + std::to_string(GetStrength())
-        + ", DXT: " + std::to_string(GetDexterity())
-        + ", INT: " + std::to_string(GetDexterity())
-        + ", FT: " + std::to_string(GetDexterity())
-        + ", CHA: " + std::to_string(GetCharisma());
+        Text::GetText("ATB-HEALTH") + ": " + std::to_string(GetHealth())
+        + ", " + Text::GetText("ATB-MANA") + ": " + std::to_string(GetMana())
+        + ", " + Text::GetText("ATB-STRENGTH") + ": " + std::to_string(GetStrength())
+        + ", " + Text::GetText("ATB-DEXTERITY") + ": " + std::to_string(GetDexterity())
+        + ", " + Text::GetText("ATB-INTELLIGENCE") + ": " + std::to_string(GetIntelligence())
+        + ", " + Text::GetText("ATB-FAITH") + ": " + std::to_string(GetFaith())
+        + ", " + Text::GetText("ATB-CHARISMA") + ": " + std::to_string(GetCharisma());
 
     return str;
 }

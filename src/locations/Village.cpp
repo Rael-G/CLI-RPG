@@ -8,7 +8,7 @@ Village::Village(std::string id, std::string name,
     this->name = name;
     this->adjacentLocations = adjacentLocations;
     
-    localCommands.push_back({"talk", std::bind(&Village::Talk, this)});
+    localCommands.push_back({"CMD-TALK", std::bind(&Village::Talk, this)});
 }
 
 void Village::Talk()
