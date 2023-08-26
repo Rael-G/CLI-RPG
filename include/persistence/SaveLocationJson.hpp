@@ -1,9 +1,10 @@
 #pragma once
 
-#include "locations/Location.hpp"
-#include "global/World.hpp"
-#include "external/nlohmann/json.hpp"
-#include "exceptions/CorruptedSaveGameException.hpp"
+#include <locations/Location.hpp>
+#include <global/World.hpp>
+#include <exceptions/CorruptedSaveGameException.hpp>
+#include <nlohmann/json.hpp>
+
 using json = nlohmann::json;
 
 struct SaveLocationJson

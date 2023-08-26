@@ -1,12 +1,12 @@
 #pragma once
 
 #include <string>
-#include "utils/Utility.hpp"
-#include "persistence/SaveLocationJson.hpp"
-#include "persistence/SaveHeroJson.hpp"
-#include "external/nlohmann/json.hpp"
-#include "exceptions/CorruptedSaveGameException.hpp"
-#include "persistence/SaveGame.hpp"
+#include <utils/Utility.hpp>
+#include <persistence/SaveLocationJson.hpp>
+#include <persistence/SaveHeroJson.hpp>
+#include <exceptions/CorruptedSaveGameException.hpp>
+#include <persistence/SaveGame.hpp>
+#include <nlohmann/json.hpp>
 
 using json = nlohmann::json;
 

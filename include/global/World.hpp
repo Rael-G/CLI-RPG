@@ -1,9 +1,11 @@
 #pragma once
 
 #include <map>
-#include "locations/Location.hpp"
-#include "entities/Npc.hpp"
-#include "locations/Village.hpp"
+#include <locations/Location.hpp>
+#include <entities/Npc.hpp>
+#include <locations/Village.hpp>
+#include <exceptions/WorldObjectException.hpp>
+
 
 struct World
 {

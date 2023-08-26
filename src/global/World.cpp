@@ -1,5 +1,4 @@
-#include "global/World.hpp"
-#include "exceptions/WorldObjectException.hpp"
+#include <global/World.hpp>
 
 std::map<std::string, Location*> World::locations = {
     { 
