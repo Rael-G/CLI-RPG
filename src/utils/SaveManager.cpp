@@ -8,7 +8,7 @@ SaveManager::~SaveManager()
     delete data;
 }
 
-bool SaveManager::Save(Hero *hero, Location *location)
+bool SaveManager::Save(Hero *hero, std::string location)
 {
     SaveGame save = SaveGame(hero, location);
 

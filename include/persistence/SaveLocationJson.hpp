@@ -2,7 +2,7 @@
 
 #include "locations/Location.hpp"
 #include "global/World.hpp"
-#include "external/nlohmann/json.hpp"
+#include "nlohmann/json.hpp"
 #include "exceptions/CorruptedSaveGameException.hpp"
 using json = nlohmann::json;
 

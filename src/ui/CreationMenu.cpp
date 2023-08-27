@@ -12,7 +12,17 @@ CreationMenu::CreationMenu() : UserInterface()
 
 std::string CreationMenu::ToString()
 {
-    return "Who Are You?\n\n" + attributes->ToString();
+    return "Who Are You?\n"
+        + name + "\n"
+        + attributes->ToString();
+}
+
+void CreationMenu::Help()
+{
+    ConsoleUtils::ClearScreen();
+
+    std::string msg {"Not yet implemented.\n\n"};
+    ConsoleUtils::PrintTextSlowly(msg);
 }
 
 void CreationMenu::DefName()
@@ -49,7 +59,7 @@ void CreationMenu::Finish()
 
     Hero *hero = new Hero(name, 0, attributes);
 
-    UserInterface *ui = new Game(hero, World::GetLocation("V01"));
+    UserInterface *ui = new Game(hero, World::GetLocation("V01")->GetId());
     ui->Run();
     delete ui;
 }

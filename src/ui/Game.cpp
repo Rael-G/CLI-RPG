@@ -1,9 +1,9 @@
 #include "ui/Game.hpp"
 
-Game::Game(Hero *hero, Location *location) : UserInterface() 
+Game::Game(Hero *hero, std::string locationId) : UserInterface() 
 {
     this->hero = hero;
-    this->location = location;
+    this->location = World::GetLocation(locationId);
 
     commands.push_back({"save", std::bind(&Game::Save, this)});
 
@@ -23,12 +23,22 @@ void Game::Save()
     ConsoleUtils::ClearScreen();
 
     std::string msg = "Success!\n\n";
+    
+    //Suposed to never happen
     std::string err = "Something went Wrong!\n\n";
 
     SaveManager *sm = DependencyInjector::GetSaveManager();
 
-    sm->Save(hero, location) 
+    sm->Save(hero, location->GetId()) 
         ? ConsoleUtils::PrintTextSlowly(msg) 
         : ConsoleUtils::PrintTextSlowly(err);
     delete sm;
+}
+
+void Game::Help()
+{
+    ConsoleUtils::ClearScreen();
+
+    std::string msg {"Not yet implemented.\n\n"};
+    ConsoleUtils::PrintTextSlowly(msg);
 }

@@ -2,15 +2,10 @@
 
 WorldObjectException::WorldObjectException(std::string msg)
 {
-    this->msg = Message() + msg;
+    this->msg = "Error Getting object from World. " + msg;
 }
 
 const char* WorldObjectException::what() const noexcept
 {
     return msg.c_str();
-}
-
-std::string WorldObjectException::Message() const
-{
-    return "Error Getting object from World. ";
 }

@@ -57,7 +57,7 @@ void StartMenu::Load()
         corrupt = sm->GetCorrupt();
         if (corrupt > 0)
         {
-            throw CorruptedSaveGameException(corrupt);
+            throw CorruptedSaveGameException();
         }
     }
     catch(const EmptySaveFolderException& e)
@@ -90,20 +90,30 @@ void StartMenu::Load()
             break;
         }
 
+        std::string err {"Type Exactly the name of the hero you want to load\n"};
         for (SaveGame save: saves)
         {
             if(input == save.hero->GetName())
             {
                 ConsoleUtils::ClearScreen();
-                UserInterface *ui = new Game(save.hero, save.location);
-                ui->Run();
-                delete ui;
-                return;
+                try
+                {
+                    UserInterface* ui = new Game(save.hero, save.location);
+                    ui->Run();
+                    delete ui;
+                    return;
+                }
+                catch (const WorldObjectException& e)
+                {
+                    err = "This SaveGame is corrupted.\n";
+                    break;
+                }
+                
             }
         }
         
         ConsoleUtils::ClearScreen();
-        ConsoleUtils::PrintTextSlowly("Type Exactly the name of the hero you want to load\n");
+        ConsoleUtils::PrintTextSlowly(err);
     }
 
     delete sm;

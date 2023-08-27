@@ -12,6 +12,8 @@ class AttributesDefinition : public UserInterface
     public:
         AttributesDefinition(Attributes *attributes, int &points);
         std::string ToString() override;
+        void Help() override;
+
         
         void Reset();
         void DefHealth();

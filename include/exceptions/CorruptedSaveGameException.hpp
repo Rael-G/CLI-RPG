@@ -6,10 +6,9 @@
 class CorruptedSaveGameException: public std::exception
 {
     private:
-        int corrupts;
         std::string msg;
     public:
-        CorruptedSaveGameException(int corrupts);
+        CorruptedSaveGameException();
         virtual const char* what() const noexcept override;
         std::string Message() const;
 };

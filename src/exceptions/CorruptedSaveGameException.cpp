@@ -1,7 +1,8 @@
 #include "exceptions/CorruptedSaveGameException.hpp"
 
-CorruptedSaveGameException::CorruptedSaveGameException(int corrupts)
-: msg(Message()), corrupts(corrupts) {}
+CorruptedSaveGameException::CorruptedSaveGameException()
+: msg(Message()) 
+{}
 
 const char* CorruptedSaveGameException::what() const noexcept
 {
@@ -10,5 +11,5 @@ const char* CorruptedSaveGameException::what() const noexcept
 
 std::string CorruptedSaveGameException::Message() const
 {
-    return "There is " + std::to_string(corrupts) + " corrupted SaveGame. ";
+    return "There are a corrupted SaveGame. ";
 }

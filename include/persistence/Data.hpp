@@ -6,7 +6,7 @@
 class Data 
 {
     protected:
-        int corrupt;
+        int corrupt {0};
         
     public:
         virtual ~Data() = default;

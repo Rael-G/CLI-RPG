@@ -1,9 +1,7 @@
 #include "exceptions/EmptySaveFolderException.hpp"
 
 EmptySaveFolderException::EmptySaveFolderException() 
-{
-    msg = Message();
-}
+: msg(Message()) {}
 
 const char* EmptySaveFolderException::what() const noexcept
 {

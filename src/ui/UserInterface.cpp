@@ -4,6 +4,8 @@ UserInterface::UserInterface()
 {
         commands.push_back({"return", std::bind(&UserInterface::Return, this)});
         commands.push_back({"exit", std::bind(&UserInterface::Exit, this)});
+        commands.push_back({ "help", std::bind(&UserInterface::Help, this) });
+
 }
 
 void UserInterface::Run()

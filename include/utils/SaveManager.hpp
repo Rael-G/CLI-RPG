@@ -14,7 +14,7 @@ class SaveManager
         SaveManager(Data *data);
         ~SaveManager();
 
-        bool Save(Hero *hero, Location *location);
+        bool Save(Hero *hero, std::string location);
         std::list<SaveGame> Load();
         int GetCorrupt();
 };

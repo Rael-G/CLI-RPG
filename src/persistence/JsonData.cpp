@@ -9,7 +9,7 @@ bool JsonData::SaveData(SaveGame SaveGame)
     json save = saveGameJson->ToJson();
     std::string saveName = saveGameJson->saveHeroJson.name;
 
-    fs::path path = "./.save/";
+    fs::path path = "./save/";
 
     if (!fs::exists(path)) 
     {
@@ -36,14 +36,18 @@ std::list<SaveGame> JsonData::LoadData()
     std::list<SaveGame> saves;
     for (json j : jsons)
     {
+        SaveGame sg = SaveGame();
         try
         {
-            saves.push_back(SaveGameJson::FromJson(j));
+            sg = SaveGameJson::FromJson(j);
+
         }
-        catch(const std::exception& e)
+        catch (const std::exception& e)
         {
-           corrupt++;
+            corrupt++;
+            continue;
         }
+        saves.push_back(sg);
     }
     
     return saves;
@@ -51,7 +55,7 @@ std::list<SaveGame> JsonData::LoadData()
 std::list<json> JsonData::GetJsons()
 {
     std::list<std::string> paths;
-    fs::path path = "./.save/";
+    fs::path path = "./save/";
 
     if (!fs::exists(path) || path.empty())
     {

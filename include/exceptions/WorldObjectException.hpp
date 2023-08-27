@@ -10,5 +10,4 @@ class WorldObjectException : public std::exception
     public:
         WorldObjectException(std::string msg);
         virtual const char* what() const noexcept override;
-        std::string Message() const;
 };

@@ -7,7 +7,8 @@ class SaveGame
 {
     public:
         Hero *hero;
-        Location *location;
+        std::string location;
 
-        SaveGame(Hero *hero, Location *location);
+        SaveGame(){}
+        SaveGame(Hero *hero, std::string location);
 };

@@ -19,4 +19,6 @@ class CreationMenu : public UserInterface
         void DefName();
         void DefAttributes();
         void Finish();
+        void Help() override;
+
 };

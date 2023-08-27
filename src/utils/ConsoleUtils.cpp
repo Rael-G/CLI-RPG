@@ -23,13 +23,14 @@ std::string ConsoleUtils::ScanInput()
 {
     std::string str {};
     std::cin >> str;
+    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+
     return str;
 }
 
 std::string ConsoleUtils::ScanLine()
 {
     std::string str {};
-    std::cin.ignore();
     std::getline(std::cin, str);
     
     return str;

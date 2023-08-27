@@ -8,6 +8,7 @@
 #include "ui/CreationMenu.hpp"
 #include "exceptions/EmptySaveFolderException.hpp"
 #include "exceptions/CorruptedSaveGameException.hpp"
+#include <exceptions/WorldObjectException.hpp>
 
 class StartMenu : public UserInterface 
 {
@@ -17,5 +18,5 @@ class StartMenu : public UserInterface
         void New();
         void Load();
         void Options();
-        void Help();
+        void Help() override;
 };

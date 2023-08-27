@@ -39,13 +39,19 @@ void Location::Travel()
         }
 
         locations = "You can travel to " + World::GetLocation(adjacentLocations[0])->GetName();
-        for (int i = 1; i < adjacentLocations.size() - 1; i++)
+        if (adjacentLocations.size() > 2)
         {
-            locations += ", " + World::GetLocation(adjacentLocations[i])->GetName();
+            for (int i = 1; i < adjacentLocations.size() - 1; i++)
+            {
+                locations += ", " + World::GetLocation(adjacentLocations[i])->GetName();
+            }
         }
-        locations += " and " +  World::GetLocation(adjacentLocations.back())->GetName()+ "\n";
+        if (adjacentLocations.size() > 1)
+        {
+            locations += " and " + World::GetLocation(adjacentLocations.back())->GetName() + "\n";
+        }
 
-        msg = locations + numLocations + "\n";
+        msg = locations + "\n" + numLocations + "\n";
     }
     
     ConsoleUtils::PrintTextSlowly(msg, 50);

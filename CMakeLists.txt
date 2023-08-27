@@ -16,6 +16,7 @@ set(INC_DIR ${CMAKE_SOURCE_DIR}/include)
 
 # Add the header inclusion directory
 include_directories(${INC_DIR})
+include_directories(${CMAKE_SOURCE_DIR}/external)
 
 # Recursively find all .cpp files in SRC_DIR
 file(GLOB_RECURSE SRCS ${SRC_DIR}/*.cpp)

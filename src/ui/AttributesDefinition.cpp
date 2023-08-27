@@ -18,7 +18,17 @@ AttributesDefinition::AttributesDefinition(Attributes *attributes, int &points)
 
 std::string AttributesDefinition::ToString()
 {
-    return "Attributes:\n" + attributes->ToString();
+    return "Attributes:\n"
+        "You have " + std::to_string(points) + " points to spent.\n"
+        + attributes->ToString();
+}
+
+void AttributesDefinition::Help()
+{
+    ConsoleUtils::ClearScreen();
+
+    std::string msg {"Not yet implemented.\n\n"};
+    ConsoleUtils::PrintTextSlowly(msg);
 }
 
 void AttributesDefinition::Reset()
@@ -39,7 +49,7 @@ int AttributesDefinition::Define(std::string input)
     catch(const std::invalid_argument& e)
     {
         ConsoleUtils::ClearScreen();
-        ConsoleUtils::PrintTextSlowly("\nInvalid input.\n\n");
+        ConsoleUtils::PrintTextSlowly("\nInvalid input." + std::string(20, ' '), 100);
         return 0;
     }
 
@@ -48,7 +58,7 @@ int AttributesDefinition::Define(std::string input)
     {
         points += pts;
         ConsoleUtils::ClearScreen();
-        ConsoleUtils::PrintTextSlowly("\nNot enough points.\n\n");
+        ConsoleUtils::PrintTextSlowly("\nNot enough points." + std::string(20, ' '), 100);
         return 0;
     }
 

@@ -20,6 +20,7 @@ class UserInterface
         void ShowCommands();
         void Input(std::string input);
         virtual std::string ToString() = 0;
+        virtual void Help() = 0;
         void Exit();
         void Return();
 };

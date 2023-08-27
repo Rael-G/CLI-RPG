@@ -4,7 +4,7 @@
 #include <list>
 #include "entities/Hero.hpp"
 #include "exceptions/CorruptedSaveGameException.hpp"
-#include "external/nlohmann/json.hpp"
+#include "nlohmann/json.hpp"
 #include "persistence/SaveInventoryJson.hpp"
 
 using json = nlohmann::json;
